@@ -8,4 +8,8 @@ public class RestaurantRepository {
 
   }
 
+  public void addVisitorFor(String restaurantId, String userUuid) {
+    
+  }
+
 }
