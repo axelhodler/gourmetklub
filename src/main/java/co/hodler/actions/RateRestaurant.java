@@ -1,6 +1,7 @@
 package co.hodler.actions;
 
 import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.model.Rating;
 
 public class RateRestaurant {
 
@@ -10,8 +11,10 @@ public class RateRestaurant {
     this.restaurantRepository = restaurantRepository;
   }
 
-  public void rate(String restaurantId, String userId, String rating) {
-    restaurantRepository.rate(restaurantId, userId, rating);
+  public void rate(Rating rating) {
+    if (restaurantRepository.hasVisited(rating.getRestaurantId(), rating.getUserId())) {
+      restaurantRepository.rate(rating);
+    }
   }
 
 }
