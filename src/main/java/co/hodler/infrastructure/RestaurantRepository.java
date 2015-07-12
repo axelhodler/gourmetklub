@@ -12,4 +12,8 @@ public class RestaurantRepository {
     
   }
 
+  public void rate(String restaurantId, String userId, String rating) {
+
+  }
+
 }
