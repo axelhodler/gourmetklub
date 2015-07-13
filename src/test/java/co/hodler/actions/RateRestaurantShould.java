@@ -12,6 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import co.hodler.infrastructure.RestaurantRepository;
 import co.hodler.model.Rating;
+import co.hodler.model.stars.OneStar;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RateRestaurantShould {
@@ -25,7 +26,7 @@ public class RateRestaurantShould {
   @Before
   public void setUp() {
     rateRestaurant = new RateRestaurant(restaurantRepository);
-    rating = new Rating("restaurantId", "userId", "rating");
+    rating = new Rating("restaurantId", "userId", new OneStar());
   }
 
   @Test
