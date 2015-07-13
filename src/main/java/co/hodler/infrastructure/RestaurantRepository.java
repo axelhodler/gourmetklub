@@ -21,4 +21,8 @@ public class RestaurantRepository {
     return false;
   }
 
+  public boolean hasNotRatedYet(String string, String string2) {
+    return false;
+  }
+
 }

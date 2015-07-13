@@ -12,7 +12,8 @@ public class RateRestaurant {
   }
 
   public void rate(Rating rating) {
-    if (restaurantRepository.hasVisited(rating.getRestaurantId(), rating.getUserId())) {
+    if (restaurantRepository.hasVisited(rating.getRestaurantId(), rating.getUserId())
+        && restaurantRepository.hasNotRatedYet(rating.getRestaurantId(), rating.getUserId())) {
       restaurantRepository.rate(rating);
     }
   }

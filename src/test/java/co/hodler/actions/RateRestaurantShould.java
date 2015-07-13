@@ -41,9 +41,19 @@ public class RateRestaurantShould {
   @Test
   public void only_rate_if_user_has_visited_restaurant() {
     given(restaurantRepository.hasVisited("restaurantId", "userId")).willReturn(true);
+    given(restaurantRepository.hasNotRatedYet("restaurantId", "userId")).willReturn(true);
 
     rateRestaurant.rate(rating);
 
     verify(restaurantRepository).rate(rating);
+  }
+
+  @Test
+  public void only_rate_if_user_has_not_yet_rated() {
+    given(restaurantRepository.hasVisited("restaurantId", "userId")).willReturn(true);
+
+    rateRestaurant.rate(rating);
+
+    verify(restaurantRepository).hasNotRatedYet("restaurantId", "userId");
   }
 }
