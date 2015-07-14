@@ -1,5 +1,7 @@
 package co.hodler.infrastructure;
 
+import java.util.List;
+
 import co.hodler.model.Rating;
 import co.hodler.model.Restaurant;
 
@@ -23,6 +25,10 @@ public class RestaurantRepository {
 
   public boolean hasNotRatedYet(String string, String string2) {
     return false;
+  }
+
+  public List<Restaurant> findAll() {
+    return null;
   }
 
 }
