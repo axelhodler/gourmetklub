@@ -12,10 +12,14 @@ public class RateRestaurant {
   }
 
   public void rate(Rating rating) {
-    if (restaurantRepository.hasVisited(rating.getRestaurantId(), rating.getUserId())
-        && restaurantRepository.hasNotRatedYet(rating.getRestaurantId(), rating.getUserId())) {
+    if (allowedToRate(rating)) {
       restaurantRepository.rate(rating);
     }
+  }
+
+  private boolean allowedToRate(Rating rating) {
+    return restaurantRepository.hasVisited(rating.getRestaurantId(), rating.getUserId())
+        && restaurantRepository.hasNotRatedYet(rating.getRestaurantId(), rating.getUserId());
   }
 
 }
