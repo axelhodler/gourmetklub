@@ -9,7 +9,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import co.hodler.infrastructure.RestaurantRepository;
 import co.hodler.model.Restaurant;
-import co.hodler.model.User;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddRestaurantShould {
@@ -19,8 +18,7 @@ public class AddRestaurantShould {
 
   @Test
   public void set_user_who_picked_restaurant() {
-    User u = new User();
-    Restaurant r = new Restaurant("name", u);
+    Restaurant r = new Restaurant("name", "userId");
 
     AddRestaurant addRestaurant = new AddRestaurant(repository);
     addRestaurant.add(r);

@@ -2,10 +2,10 @@ package co.hodler.model;
 
 public class Restaurant {
 
-  private User picker;
   private String name;
+  private String picker;
 
-  public Restaurant(String name, User picker) {
+  public Restaurant(String name, String picker) {
     this.name = name;
     this.picker = picker;
   }
