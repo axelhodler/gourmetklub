@@ -1,18 +1,18 @@
 package co.hodler.actions;
 
-import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.infrastructure.VisitRepository;
 import co.hodler.model.Visit;
 
 public class VisitRestaurant {
 
-  private RestaurantRepository restaurantRepo;
+  private VisitRepository visitRepository;
 
-  public VisitRestaurant(RestaurantRepository restaurantRepo) {
-    this.restaurantRepo = restaurantRepo;
+  public VisitRestaurant(VisitRepository visitRepository) {
+    this.visitRepository = visitRepository;
   }
 
   public void visit(Visit visit) {
-    restaurantRepo.persist(visit);
+    visitRepository.persist(visit);
   }
 
 }

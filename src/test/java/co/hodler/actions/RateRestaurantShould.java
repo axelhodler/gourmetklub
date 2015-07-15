@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.infrastructure.VisitRepository;
 import co.hodler.model.Rating;
 import co.hodler.model.Visit;
 import co.hodler.model.stars.OneStar;
@@ -22,19 +23,21 @@ public class RateRestaurantShould {
 
   @Mock
   RestaurantRepository restaurantRepository;
+  @Mock
+  VisitRepository visitRepository;
 
   private RateRestaurant rateRestaurant;
   private Rating rating;
 
   @Before
   public void setUp() {
-    rateRestaurant = new RateRestaurant(restaurantRepository);
+    rateRestaurant = new RateRestaurant(restaurantRepository, visitRepository);
     rating = new Rating(VISIT, new OneStar());
   }
 
   @Test
   public void check_if_user_has_visited_restaurant() {
-    given(restaurantRepository.exists(VISIT)).willReturn(false);
+    given(visitRepository.exists(VISIT)).willReturn(false);
 
     rateRestaurant.rate(rating);
 
@@ -43,8 +46,8 @@ public class RateRestaurantShould {
 
   @Test
   public void only_rate_if_user_has_visited_restaurant() {
-    given(restaurantRepository.exists(VISIT)).willReturn(true);
-    given(restaurantRepository.isRated(VISIT)).willReturn(true);
+    given(visitRepository.exists(VISIT)).willReturn(true);
+    given(visitRepository.isRated(VISIT)).willReturn(true);
 
     rateRestaurant.rate(rating);
 
@@ -53,10 +56,10 @@ public class RateRestaurantShould {
 
   @Test
   public void only_rate_if_user_has_not_yet_rated() {
-    given(restaurantRepository.exists(VISIT)).willReturn(true);
+    given(visitRepository.exists(VISIT)).willReturn(true);
 
     rateRestaurant.rate(rating);
 
-    verify(restaurantRepository).isRated(VISIT);
+    verify(visitRepository).isRated(VISIT);
   }
 }
