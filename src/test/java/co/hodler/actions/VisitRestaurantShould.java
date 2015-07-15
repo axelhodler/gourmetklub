@@ -22,6 +22,6 @@ public class VisitRestaurantShould {
 
     vr.visit(new Visit("restaurantId", "userId"));
 
-    verify(restaurantRepo).addVisitorFor(new Visit("restaurantId", "userId"));
+    verify(restaurantRepo).persist(new Visit("restaurantId", "userId"));
   }
 }

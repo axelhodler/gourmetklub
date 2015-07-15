@@ -32,29 +32,29 @@ public class RateRestaurantShould {
 
   @Test
   public void check_if_user_has_visited_restaurant() {
-    given(restaurantRepository.hasVisited(new Visit("restaurantId", "userId"))).willReturn(false);
+    given(restaurantRepository.exists(new Visit("restaurantId", "userId"))).willReturn(false);
 
     rateRestaurant.rate(rating);
 
-    verify(restaurantRepository, never()).rate(rating);
+    verify(restaurantRepository, never()).persist(rating);
   }
 
   @Test
   public void only_rate_if_user_has_visited_restaurant() {
-    given(restaurantRepository.hasVisited(new Visit("restaurantId", "userId"))).willReturn(true);
-    given(restaurantRepository.hasNotRatedYet(new Visit("restaurantId", "userId"))).willReturn(true);
+    given(restaurantRepository.exists(new Visit("restaurantId", "userId"))).willReturn(true);
+    given(restaurantRepository.isRated(new Visit("restaurantId", "userId"))).willReturn(true);
 
     rateRestaurant.rate(rating);
 
-    verify(restaurantRepository).rate(rating);
+    verify(restaurantRepository).persist(rating);
   }
 
   @Test
   public void only_rate_if_user_has_not_yet_rated() {
-    given(restaurantRepository.hasVisited(new Visit("restaurantId", "userId"))).willReturn(true);
+    given(restaurantRepository.exists(new Visit("restaurantId", "userId"))).willReturn(true);
 
     rateRestaurant.rate(rating);
 
-    verify(restaurantRepository).hasNotRatedYet(new Visit("restaurantId", "userId"));
+    verify(restaurantRepository).isRated(new Visit("restaurantId", "userId"));
   }
 }

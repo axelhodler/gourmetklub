@@ -10,13 +10,13 @@ public interface RestaurantRepository {
 
   public void persist(Restaurant r);
 
-  public void addVisitorFor(Visit visit);
+  public void persist(Visit visit);
 
-  public void rate(Rating rating);
+  public void persist(Rating rating);
 
-  public boolean hasVisited(Visit visit);
+  public boolean exists(Visit visit);
 
-  public boolean hasNotRatedYet(Visit visit);
+  public boolean isRated(Visit visit);
 
   public List<Restaurant> findAll();
 }

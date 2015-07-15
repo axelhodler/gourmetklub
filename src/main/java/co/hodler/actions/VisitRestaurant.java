@@ -12,7 +12,7 @@ public class VisitRestaurant {
   }
 
   public void visit(Visit visit) {
-    restaurantRepo.addVisitorFor(visit);
+    restaurantRepo.persist(visit);
   }
 
 }

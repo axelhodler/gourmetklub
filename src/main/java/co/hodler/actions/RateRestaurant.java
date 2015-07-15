@@ -14,13 +14,13 @@ public class RateRestaurant {
 
   public void rate(Rating rating) {
     if (allowedToRate(rating)) {
-      restaurantRepository.rate(rating);
+      restaurantRepository.persist(rating);
     }
   }
 
   private boolean allowedToRate(Rating rating) {
-    return restaurantRepository.hasVisited(new Visit(rating.getRestaurantId(), rating.getUserId()))
-        && restaurantRepository.hasNotRatedYet(new Visit(rating.getRestaurantId(), rating.getUserId()));
+    return restaurantRepository.exists(new Visit(rating.getRestaurantId(), rating.getUserId()))
+        && restaurantRepository.isRated(new Visit(rating.getRestaurantId(), rating.getUserId()));
   }
 
 }

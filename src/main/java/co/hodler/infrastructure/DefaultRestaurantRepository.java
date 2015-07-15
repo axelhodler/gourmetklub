@@ -14,22 +14,22 @@ public class DefaultRestaurantRepository implements RestaurantRepository {
   }
 
   @Override
-  public void addVisitorFor(Visit visit) {
+  public void persist(Visit visit) {
 
   }
 
   @Override
-  public void rate(Rating rating) {
+  public void persist(Rating rating) {
 
   }
 
   @Override
-  public boolean hasVisited(Visit visit) {
+  public boolean exists(Visit visit) {
     return false;
   }
 
   @Override
-  public boolean hasNotRatedYet(Visit visit) {
+  public boolean isRated(Visit visit) {
     return false;
   }
 
