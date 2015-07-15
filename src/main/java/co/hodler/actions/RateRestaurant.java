@@ -2,6 +2,7 @@ package co.hodler.actions;
 
 import co.hodler.infrastructure.RestaurantRepository;
 import co.hodler.model.Rating;
+import co.hodler.model.Visit;
 
 public class RateRestaurant {
 
@@ -18,8 +19,8 @@ public class RateRestaurant {
   }
 
   private boolean allowedToRate(Rating rating) {
-    return restaurantRepository.hasVisited(rating.getRestaurantId(), rating.getUserId())
-        && restaurantRepository.hasNotRatedYet(rating.getRestaurantId(), rating.getUserId());
+    return restaurantRepository.hasVisited(new Visit(rating.getRestaurantId(), rating.getUserId()))
+        && restaurantRepository.hasNotRatedYet(new Visit(rating.getRestaurantId(), rating.getUserId()));
   }
 
 }

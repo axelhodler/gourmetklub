@@ -8,9 +8,9 @@ public class Rating {
   private String userId;
   private Stars rating;
 
-  public Rating(String restaurantId, String userId, Stars stars) {
-    this.restaurantId = restaurantId;
-    this.userId = userId;
+  public Rating(Visit visit, Stars stars) {
+    this.restaurantId = visit.getRestaurantId();
+    this.userId = visit.getUserId();
     this.rating = rating;
   }
 

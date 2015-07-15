@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.model.Visit;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VisitRestaurantShould {
@@ -19,8 +20,8 @@ public class VisitRestaurantShould {
   public void add_visitor_to_restaurant() {
     VisitRestaurant vr = new VisitRestaurant(restaurantRepo);
 
-    vr.visit("restaurantId", "userId");
+    vr.visit(new Visit("restaurantId", "userId"));
 
-    verify(restaurantRepo).addVisitorFor("restaurantId", "userId");
+    verify(restaurantRepo).addVisitorFor(new Visit("restaurantId", "userId"));
   }
 }

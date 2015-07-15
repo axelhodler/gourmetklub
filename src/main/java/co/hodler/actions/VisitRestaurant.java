@@ -1,6 +1,7 @@
 package co.hodler.actions;
 
 import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.model.Visit;
 
 public class VisitRestaurant {
 
@@ -10,8 +11,8 @@ public class VisitRestaurant {
     this.restaurantRepo = restaurantRepo;
   }
 
-  public void visit(String restaurantId, String userId) {
-    restaurantRepo.addVisitorFor(restaurantId, userId);
+  public void visit(Visit visit) {
+    restaurantRepo.addVisitorFor(visit);
   }
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import co.hodler.model.Rating;
 import co.hodler.model.Restaurant;
+import co.hodler.model.Visit;
 
 public class DefaultRestaurantRepository implements RestaurantRepository {
 
@@ -13,7 +14,7 @@ public class DefaultRestaurantRepository implements RestaurantRepository {
   }
 
   @Override
-  public void addVisitorFor(String restaurantId, String userId) {
+  public void addVisitorFor(Visit visit) {
 
   }
 
@@ -23,12 +24,12 @@ public class DefaultRestaurantRepository implements RestaurantRepository {
   }
 
   @Override
-  public boolean hasVisited(String restaurantId, String userId) {
+  public boolean hasVisited(Visit visit) {
     return false;
   }
 
   @Override
-  public boolean hasNotRatedYet(String string, String string2) {
+  public boolean hasNotRatedYet(Visit visit) {
     return false;
   }
 
