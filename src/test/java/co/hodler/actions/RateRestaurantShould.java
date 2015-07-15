@@ -18,6 +18,8 @@ import co.hodler.model.stars.OneStar;
 @RunWith(MockitoJUnitRunner.class)
 public class RateRestaurantShould {
 
+  private static final Visit VISIT = new Visit("restaurantId", "userId");
+
   @Mock
   RestaurantRepository restaurantRepository;
 
@@ -27,12 +29,12 @@ public class RateRestaurantShould {
   @Before
   public void setUp() {
     rateRestaurant = new RateRestaurant(restaurantRepository);
-    rating = new Rating(new Visit("restaurantId", "userId"), new OneStar());
+    rating = new Rating(VISIT, new OneStar());
   }
 
   @Test
   public void check_if_user_has_visited_restaurant() {
-    given(restaurantRepository.exists(new Visit("restaurantId", "userId"))).willReturn(false);
+    given(restaurantRepository.exists(VISIT)).willReturn(false);
 
     rateRestaurant.rate(rating);
 
@@ -41,8 +43,8 @@ public class RateRestaurantShould {
 
   @Test
   public void only_rate_if_user_has_visited_restaurant() {
-    given(restaurantRepository.exists(new Visit("restaurantId", "userId"))).willReturn(true);
-    given(restaurantRepository.isRated(new Visit("restaurantId", "userId"))).willReturn(true);
+    given(restaurantRepository.exists(VISIT)).willReturn(true);
+    given(restaurantRepository.isRated(VISIT)).willReturn(true);
 
     rateRestaurant.rate(rating);
 
@@ -51,10 +53,10 @@ public class RateRestaurantShould {
 
   @Test
   public void only_rate_if_user_has_not_yet_rated() {
-    given(restaurantRepository.exists(new Visit("restaurantId", "userId"))).willReturn(true);
+    given(restaurantRepository.exists(VISIT)).willReturn(true);
 
     rateRestaurant.rate(rating);
 
-    verify(restaurantRepository).isRated(new Visit("restaurantId", "userId"));
+    verify(restaurantRepository).isRated(VISIT);
   }
 }
