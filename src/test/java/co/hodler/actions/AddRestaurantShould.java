@@ -18,7 +18,7 @@ public class AddRestaurantShould {
 
   @Test
   public void set_user_who_picked_restaurant() {
-    Restaurant r = new Restaurant("name", "userId");
+    Restaurant r = new Restaurant("name", 1);
 
     AddRestaurant addRestaurant = new AddRestaurant(repository);
     addRestaurant.add(r);

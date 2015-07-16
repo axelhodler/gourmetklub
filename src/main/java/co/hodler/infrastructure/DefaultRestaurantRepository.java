@@ -2,14 +2,23 @@ package co.hodler.infrastructure;
 
 import java.util.List;
 
+import org.dalesbred.Database;
+
 import co.hodler.model.Rating;
 import co.hodler.model.Restaurant;
 
 public class DefaultRestaurantRepository implements RestaurantRepository {
 
+  private Database database;
+
+  public DefaultRestaurantRepository(Database db) {
+    this.database = db;
+  }
+
   @Override
   public void persist(Restaurant r) {
-
+    database.update("INSERT INTO restaurant(id, name, pickerId) VALUES (?, ?, ?);", r.getId(), r.getName(),
+        r.getPickerId());
   }
 
   @Override
