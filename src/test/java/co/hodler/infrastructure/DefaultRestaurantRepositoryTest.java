@@ -21,7 +21,9 @@ public class DefaultRestaurantRepositoryTest {
   public void setUp() {
     initInmemoryDb();
     db = Database.forUrlAndCredentials("jdbc:h2:mem:test", "", "");
-    db.update("CREATE TABLE restaurant (id INT, name VARCHAR(50), pickerId INT);");
+    db.update("CREATE TABLE restaurant (id INT NOT NULL AUTO_INCREMENT,"
+                                      + "name VARCHAR(50),"
+                                      + "pickerId INT);");
 
     restaurantRepo = new DefaultRestaurantRepository(db);
   }
@@ -29,12 +31,11 @@ public class DefaultRestaurantRepositoryTest {
   @Test
   public void can_persist_restaurant() {
     Restaurant r = new Restaurant("Traube", 1);
-    r.setId(1);
     restaurantRepo.persist(r);
 
-    Restaurant onlyRestaurant = db.findUnique(Restaurant.class,
-        "SELECT * FROM restaurant WHERE id = ?", 1);
+    Restaurant onlyRestaurant = db.findUnique(Restaurant.class, "SELECT * FROM restaurant WHERE id = ?", 1);
 
+    assertThat(onlyRestaurant.getId(), equalTo(1));
     assertThat(onlyRestaurant.getName(), equalTo("Traube"));
   }
 
