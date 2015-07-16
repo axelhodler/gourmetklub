@@ -5,10 +5,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.List;
 
 import org.dalesbred.Database;
-import org.dalesbred.query.SqlQuery;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,12 +19,7 @@ public class DefaultRestaurantRepositoryTest {
 
   @Before
   public void setUp() {
-    try {
-      Class.forName("org.h2.Driver");
-      DriverManager.getConnection("jdbc:h2:mem:test", "", "");
-    } catch (ClassNotFoundException | SQLException e) {
-      e.printStackTrace();
-    }
+    initInmemoryDb();
     db = Database.forUrlAndCredentials("jdbc:h2:mem:test", "", "");
     db.update("CREATE TABLE restaurant (id INT, name VARCHAR(50), pickerId INT);");
 
@@ -43,5 +36,14 @@ public class DefaultRestaurantRepositoryTest {
         "SELECT * FROM restaurant WHERE id = ?", 1);
 
     assertThat(onlyRestaurant.getName(), equalTo("Traube"));
+  }
+
+  private void initInmemoryDb() {
+    try {
+      Class.forName("org.h2.Driver");
+      DriverManager.getConnection("jdbc:h2:mem:test", "", "");
+    } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+    }
   }
 }
