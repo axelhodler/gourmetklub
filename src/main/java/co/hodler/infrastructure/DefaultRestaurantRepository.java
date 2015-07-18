@@ -17,8 +17,7 @@ public class DefaultRestaurantRepository implements RestaurantRepository {
 
   @Override
   public void persist(Restaurant r) {
-    database.update("INSERT INTO restaurant(name, pickerId) VALUES (?, ?);", r.getName(),
-        r.getPickerId());
+    database.update("INSERT INTO restaurant(name, pickerId) VALUES (?, ?);", r.getName(), r.getPickerId());
   }
 
   @Override
@@ -28,7 +27,7 @@ public class DefaultRestaurantRepository implements RestaurantRepository {
 
   @Override
   public List<Restaurant> findAll() {
-    return null;
+    return database.findAll(Restaurant.class, "SELECT * FROM restaurant");
   }
 
 }

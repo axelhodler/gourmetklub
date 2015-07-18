@@ -1,10 +1,12 @@
 package co.hodler.infrastructure;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.dalesbred.Database;
 import org.junit.Before;
@@ -29,14 +31,16 @@ public class DefaultRestaurantRepositoryTest {
   }
 
   @Test
-  public void can_persist_restaurant() {
-    Restaurant r = new Restaurant("Traube", 1);
-    restaurantRepo.persist(r);
+  public void can_retrieve_all_restaurants() {
+    Restaurant first = new Restaurant("First", 1);
+    Restaurant second = new Restaurant("First", 2);
+    restaurantRepo.persist(first);
+    restaurantRepo.persist(second);
 
-    Restaurant onlyRestaurant = db.findUnique(Restaurant.class, "SELECT * FROM restaurant WHERE id = ?", 1);
+    List<Restaurant> allRestaurants = restaurantRepo.findAll();
 
-    assertThat(onlyRestaurant.getId(), equalTo(1));
-    assertThat(onlyRestaurant.getName(), equalTo("Traube"));
+    assertThat(allRestaurants.size(), is(2));
+    assertThat(allRestaurants.get(1).getName(), equalTo("First"));
   }
 
   private void initInmemoryDb() {
