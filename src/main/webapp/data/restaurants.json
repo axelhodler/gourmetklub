@@ -1,4 +1,4 @@
-[
+{"restaurants":[
   {
     "id":1,
     "name":"87",
@@ -50,3 +50,4 @@
     "address":"Tübinger Str. 41-43, 70178 Stuttgart"
   }
 ]
+}
