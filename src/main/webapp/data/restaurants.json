@@ -1,0 +1,52 @@
+[
+  {
+    "id":1,
+    "name":"87",
+    "address":"König-Karl-Straße 87, Stuttgart"
+  },
+  {
+    "id":2,
+    "name":"Gigis Burgerbar",
+    "address":"Theodor-Heuss-Strasse 34, 70174 Stuttgart"
+  },
+  {
+    "id":3,
+    "name":"Bonnie and Clyde",
+    "address":"Heinrich Baumann Str. 24, 70190 Stuttgart"
+  },
+  {
+    "id":4,
+    "name":"Madagascar",
+    "address":"Filderstrasse 61, 70180 Stuttgart"
+  },
+  {
+    "id":5,
+    "name":"Ceylonas",
+    "address":"Reinsburgstraße 74 70178 Stuttgart"
+  },
+  {
+    "id":6,
+    "name":"Tshito Gwrito",
+    "address":"Heinrich-Baumann-Straße 23, 70190 Stuttgart"
+  },
+  {
+    "id":7,
+    "name":"Ebony",
+    "address":"Herzogstrasse 11, 70176 Stuttgart"
+  },
+  {
+    "id":8,
+    "name":"Gerüchteküche-Stuttgart",
+    "address":"Rotebühlstrasse 159, 70197 Stuttgart"
+  },
+  {
+    "id":9,
+    "name":"Ganesha",
+    "address":"Rotebühlstraße 155, 70197 Stuttgart"
+  },
+  {
+    "id":10,
+    "name":"Perbacco",
+    "address":"Tübinger Str. 41-43, 70178 Stuttgart"
+  }
+]
