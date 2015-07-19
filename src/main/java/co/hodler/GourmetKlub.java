@@ -10,6 +10,6 @@ public class GourmetKlub {
   public static void main(String[] args) {
     Spark.port(Integer.valueOf(System.getenv("PORT")));
 
-    get("/restaurants", (req, res) -> jsonArrayAsString("./src/main/webapp/data/restaurants.json"));
+    get("/restaurants", (req, res) -> jsonObjectAsString("./src/main/webapp/data/restaurants.json"));
   }
 }

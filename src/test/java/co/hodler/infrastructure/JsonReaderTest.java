@@ -9,7 +9,7 @@ public class JsonReaderTest {
 
   @Test
   public void dealsWithUmlauts() {
-    String restaurants = jsonArrayAsString("./src/main/webapp/data/restaurants.json");
+    String restaurants = jsonObjectAsString("./src/main/webapp/data/restaurants.json");
 
     assertTrue(restaurants.contains("Tü"));
   }
