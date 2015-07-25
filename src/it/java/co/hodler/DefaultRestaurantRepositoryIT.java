@@ -1,4 +1,4 @@
-package co.hodler.infrastructure;
+package co.hodler;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -12,9 +12,11 @@ import org.dalesbred.Database;
 import org.junit.Before;
 import org.junit.Test;
 
+import co.hodler.infrastructure.DefaultRestaurantRepository;
+import co.hodler.infrastructure.RestaurantRepository;
 import co.hodler.model.Restaurant;
 
-public class DefaultRestaurantRepositoryTest {
+public class DefaultRestaurantRepositoryIT {
 
   private Database db;
   private RestaurantRepository restaurantRepo;

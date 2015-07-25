@@ -1,13 +1,14 @@
-package co.hodler.infrastructure;
+package co.hodler;
 
 import org.junit.Test;
 
+import co.hodler.infrastructure.CoordinatesProvider;
 import co.hodler.model.Coordinates;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class CoordinatesProviderTest {
+public class CoordinatesProviderIT {
 
   @Test
   public void providesCoordinatesForAddress() {
