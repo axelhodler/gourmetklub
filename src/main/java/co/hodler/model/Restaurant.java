@@ -1,10 +1,14 @@
 package co.hodler.model;
 
+import co.hodler.infrastructure.Coordinates;
+
 public class Restaurant {
 
   private int id;
   private String name;
   private int pickerId;
+  private String address;
+  private Coordinates coordinates;
 
   public Restaurant() {
   }
@@ -37,4 +41,21 @@ public class Restaurant {
   public void setPickerId(int id) {
     this.pickerId = id;
   }
+
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  public String getAddress() {
+    return this.address;
+  }
+
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
+
 }

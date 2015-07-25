@@ -1,12 +1,16 @@
 package co.hodler.actions;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.BDDMockito.given;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import co.hodler.infrastructure.Coordinates;
+import co.hodler.infrastructure.CoordinatesProvider;
 import co.hodler.infrastructure.RestaurantRepository;
 import co.hodler.model.Restaurant;
 
@@ -15,15 +19,27 @@ public class AddRestaurantShould {
 
   @Mock
   RestaurantRepository repository;
+  @Mock
+  CoordinatesProvider coordinatesProvider;
+
+  private AddRestaurant addRestaurant;
+
+  @Before
+  public void setUp() {
+    addRestaurant = new AddRestaurant(repository, coordinatesProvider);
+
+    given(coordinatesProvider
+            .fetchCoordinatesFor("Schwabstrasse 100 Stuttgart"))
+            .willReturn(new Coordinates("50", "9"));
+  }
 
   @Test
-  public void set_user_who_picked_restaurant() {
-    Restaurant r = new Restaurant("name", 1);
+  public void set_coordinates_of_the_restaurant() {
+    Restaurant r = new Restaurant("name", 2);
+    r.setAddress("Schwabstrasse 100 Stuttgart");
 
-    AddRestaurant addRestaurant = new AddRestaurant(repository);
     addRestaurant.add(r);
 
     verify(repository).persist(r);
   }
-
 }
