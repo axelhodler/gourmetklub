@@ -6,6 +6,8 @@ import org.json.JSONObject;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import co.hodler.model.Coordinates;
+
 public class CoordinatesProvider {
 
   public Coordinates fetchCoordinatesFor(String address) {

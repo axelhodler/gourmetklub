@@ -1,7 +1,5 @@
 package co.hodler.model;
 
-import co.hodler.infrastructure.Coordinates;
-
 public class Restaurant {
 
   private int id;

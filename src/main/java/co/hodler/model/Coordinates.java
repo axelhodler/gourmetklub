@@ -1,4 +1,4 @@
-package co.hodler.infrastructure;
+package co.hodler.model;
 
 public class Coordinates {
 

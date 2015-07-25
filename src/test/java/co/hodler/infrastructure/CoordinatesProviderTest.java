@@ -1,6 +1,9 @@
 package co.hodler.infrastructure;
 
 import org.junit.Test;
+
+import co.hodler.model.Coordinates;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 

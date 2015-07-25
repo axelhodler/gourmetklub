@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.hodler.infrastructure.Coordinates;
 import co.hodler.infrastructure.CoordinatesProvider;
 import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.model.Coordinates;
 import co.hodler.model.Restaurant;
 
 @RunWith(MockitoJUnitRunner.class)
