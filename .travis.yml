@@ -1,4 +1,6 @@
 language: java
 
+script: ./bin/run-tests.sh
+
 jdk:
   - oraclejdk8
