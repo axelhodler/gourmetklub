@@ -17,7 +17,8 @@ public class DefaultRestaurantRepository implements RestaurantRepository {
 
   @Override
   public void persist(Restaurant r) {
-    database.update("INSERT INTO restaurant(name, pickerId) VALUES (?, ?);", r.getName(), r.getPickerId());
+    database.update("INSERT INTO restaurant(name, pickerId, latitude, longitude) VALUES (?, ?, ?, ?);",
+        r.getName(), r.getPickerId(), r.getCoordinates().getLat(), r.getCoordinates().getLng());
   }
 
   @Override

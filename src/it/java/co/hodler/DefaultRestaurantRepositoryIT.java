@@ -9,11 +9,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.dalesbred.Database;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import co.hodler.infrastructure.DefaultRestaurantRepository;
 import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.model.Coordinates;
 import co.hodler.model.Restaurant;
 
 public class DefaultRestaurantRepositoryIT {
@@ -27,9 +29,28 @@ public class DefaultRestaurantRepositoryIT {
     db = Database.forUrlAndCredentials("jdbc:h2:mem:test", "", "");
     db.update("CREATE TABLE restaurant (id INT NOT NULL AUTO_INCREMENT,"
                                       + "name VARCHAR(50),"
-                                      + "pickerId INT);");
+                                      + "pickerId INT,"
+                                      + "latitude VARCHAR(50),"
+                                      + "longitude VARCHAR(50));");
 
     restaurantRepo = new DefaultRestaurantRepository(db);
+  }
+
+  @After
+  public void tearDown() {
+    db.update("DROP TABLE restaurant");
+  }
+
+  @Test
+  public void can_store_restaurant_with_coordinates() throws Exception {
+    Restaurant restaurant = new Restaurant("First", 1);
+    restaurant.setCoordinates(new Coordinates("50", "10"));
+
+    restaurantRepo.persist(restaurant);
+
+    List<Restaurant> allRestaurants = restaurantRepo.findAll();
+    assertThat(allRestaurants.get(0).getCoordinates().getLat(), equalTo("50"));
+    assertThat(allRestaurants.get(0).getCoordinates().getLng(), equalTo("10"));
   }
 
   @Test

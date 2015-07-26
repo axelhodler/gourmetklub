@@ -7,6 +7,8 @@ public class Restaurant {
   private int pickerId;
   private String address;
   private Coordinates coordinates;
+  private String latitude;
+  private String longitude;
 
   public Restaurant() {
   }
@@ -49,11 +51,19 @@ public class Restaurant {
   }
 
   public Coordinates getCoordinates() {
-    return coordinates;
+    return new Coordinates(latitude, longitude);
   }
 
   public void setCoordinates(Coordinates coordinates) {
-    this.coordinates = coordinates;
+    this.latitude = coordinates.getLat();
+    this.longitude = coordinates.getLng();
   }
 
+  public void setLatitude(String latitude) {
+    this.latitude = latitude;
+  }
+
+  public void setLongitude(String longitude) {
+    this.longitude = longitude;
+  }
 }
