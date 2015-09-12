@@ -2,7 +2,16 @@ package co.hodler.model;
 
 public class User {
 
-  public int id;
+  private PropertyId id;
+
+  public User(PropertyId id) {
+    this.id = id;
+  }
+
   public String name;
+
+  public PropertyId getId() {
+    return id;
+  }
 
 }
