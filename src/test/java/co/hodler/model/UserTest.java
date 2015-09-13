@@ -15,4 +15,9 @@ public class UserTest {
 
     assertThat(id, equalTo(user.getId()));
   }
+
+  @Test
+  public void canCreateUser() {
+    User user = new User.Builder().named("peter").mail("peter@peter.com").chosePassword("password").build();
+  }
 }
