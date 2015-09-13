@@ -24,7 +24,7 @@ public class DefaultRestaurantRepositoryIT {
   private RestaurantRepository restaurantRepo;
 
   @Before
-  public void setUp() {
+  public void setUp() throws Exception {
     initInmemoryDb();
     db = Database.forUrlAndCredentials("jdbc:h2:mem:test", "", "");
     db.update("CREATE TABLE restaurant (id INT NOT NULL AUTO_INCREMENT,"
@@ -66,12 +66,8 @@ public class DefaultRestaurantRepositoryIT {
     assertThat(allRestaurants.get(1).getName(), equalTo("First"));
   }
 
-  private void initInmemoryDb() {
-    try {
-      Class.forName("org.h2.Driver");
-      DriverManager.getConnection("jdbc:h2:mem:test", "", "");
-    } catch (ClassNotFoundException | SQLException e) {
-      e.printStackTrace();
-    }
+  private void initInmemoryDb() throws ClassNotFoundException, SQLException {
+    Class.forName("org.h2.Driver");
+    DriverManager.getConnection("jdbc:h2:mem:test", "", "");
   }
 }
