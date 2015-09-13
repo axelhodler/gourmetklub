@@ -5,7 +5,7 @@ public class User {
   private PropertyId id;
   private String name;
   private String mail;
-  private String password;
+  private HashedPassword password;
 
   public User(PropertyId id) {
     this.id = id;
@@ -24,7 +24,7 @@ public class User {
   public static class Builder {
     private String name;
     private String mail;
-    private String password;
+    private HashedPassword password;
 
     public Builder named(String name) {
       this.name = name;
@@ -37,7 +37,7 @@ public class User {
     }
 
     public Builder chosePassword(String password) {
-      this.password = password;
+      this.password = new HashedPassword(password);
       return this;
     }
 
