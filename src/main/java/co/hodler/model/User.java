@@ -11,6 +11,13 @@ public class User {
     this.id = id;
   }
 
+  public User(int id, String name, String mail, String password) {
+    this.id = new PropertyId(id);
+    this.name = name;
+    this.mail = mail;
+    this.password = new HashedPassword(password);
+  }
+
   public User(Builder builder) {
     this.name = builder.name;
     this.mail = builder.mail;
