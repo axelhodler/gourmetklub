@@ -26,7 +26,8 @@ public class DefaultUserRepositoryIT {
     db.update("CREATE TABLE user (id INT NOT NULL AUTO_INCREMENT,"
                                       + "name VARCHAR(50),"
                                       + "mail VARCHAR(250),"
-                                      + "passwordHashed VARCHAR(250));");
+                                      + "passwordHashed VARCHAR(250),"
+                                      + "CONSTRAINT name_unique UNIQUE(name));");
 
     userRepo = new DefaultUserRepository(db);
   }
@@ -39,6 +40,15 @@ public class DefaultUserRepositoryIT {
     List<User> allUsers = userRepo.findAll();
 
     assertThat(allUsers.get(0).getName(), equalTo("Pete"));
+  }
+
+  @Test(expected = RuntimeException.class)
+  public void userNameShouldBeUnique() {
+    User user = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.foo").build();
+    User secondUserTryingToBeNamedPeter = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.bar").build();
+
+    userRepo.store(user);
+    userRepo.store(secondUserTryingToBeNamedPeter);
   }
 
   @After
