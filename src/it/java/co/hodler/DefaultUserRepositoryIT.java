@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import co.hodler.infrastructure.DefaultUserRepository;
+import co.hodler.model.PropertyId;
 import co.hodler.model.User;
 
 public class DefaultUserRepositoryIT {
@@ -59,6 +60,19 @@ public class DefaultUserRepositoryIT {
 
     userRepo.store(user);
     userRepo.store(secondUserTryingToUsePetersMail);
+  }
+
+  @Test
+  public void canGetUserIdByMailAndPassword() {
+    String petesPassword = "password";
+    String petesMail = "pete@own.foo";
+    User user = new User.Builder().named("Pete").chosePassword(petesPassword)
+        .mail(petesMail).build();
+
+    userRepo.store(user);
+
+    assertThat(userRepo.fetchUserIdFor(petesPassword, petesMail),
+        equalTo(new PropertyId(1)));
   }
 
   @After

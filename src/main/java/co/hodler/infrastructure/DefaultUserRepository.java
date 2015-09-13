@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.dalesbred.Database;
 
+import co.hodler.model.HashedPassword;
+import co.hodler.model.PropertyId;
 import co.hodler.model.User;
 
 public class DefaultUserRepository implements UserRepository {
@@ -28,6 +30,12 @@ public class DefaultUserRepository implements UserRepository {
 
   public List<User> findAll() {
     return database.findAll(User.class, "SELECT * FROM user");
+  }
+
+  public PropertyId fetchUserIdFor(String password, String mailAddress) {
+    return database.findUnique(User.class,
+        "SELECT * FROM user WHERE passwordHashed = ? AND mail = ?",
+        new HashedPassword(password).value(), mailAddress).getId();
   }
 
 }
