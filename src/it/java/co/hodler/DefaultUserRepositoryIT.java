@@ -8,6 +8,7 @@ import java.util.List;
 import org.dalesbred.Database;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import co.hodler.infrastructure.DefaultUserRepository;
@@ -27,7 +28,8 @@ public class DefaultUserRepositoryIT {
                                       + "name VARCHAR(50),"
                                       + "mail VARCHAR(250),"
                                       + "passwordHashed VARCHAR(250),"
-                                      + "CONSTRAINT name_unique UNIQUE(name));");
+                                      + "CONSTRAINT name_unique UNIQUE(name),"
+                                      + "CONSTRAINT mail_unique UNIQUE(mail));");
 
     userRepo = new DefaultUserRepository(db);
   }
@@ -49,6 +51,15 @@ public class DefaultUserRepositoryIT {
 
     userRepo.store(user);
     userRepo.store(secondUserTryingToBeNamedPeter);
+  }
+
+  @Test(expected = RuntimeException.class)
+  public void userMailShouldBeUnique() {
+    User user = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.foo").build();
+    User secondUserTryingToUsePetersMail = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.foo").build();
+
+    userRepo.store(user);
+    userRepo.store(secondUserTryingToUsePetersMail);
   }
 
   @After
