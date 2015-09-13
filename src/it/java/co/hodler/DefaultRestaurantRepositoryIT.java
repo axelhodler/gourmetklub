@@ -4,8 +4,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
 
 import org.dalesbred.Database;
@@ -28,11 +26,7 @@ public class DefaultRestaurantRepositoryIT {
     InMemoryDbSetup dbSetup = new InMemoryDbSetup();
     db = dbSetup.initDatabaseByUrl();
 
-    db.update("CREATE TABLE restaurant (id INT NOT NULL AUTO_INCREMENT,"
-                                      + "name VARCHAR(50),"
-                                      + "pickerId INT,"
-                                      + "latitude VARCHAR(50),"
-                                      + "longitude VARCHAR(50));");
+    dbSetup.createRestaurantTable(db);
 
     restaurantRepo = new DefaultRestaurantRepository(db);
   }

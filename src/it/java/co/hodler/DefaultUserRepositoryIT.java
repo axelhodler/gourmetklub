@@ -24,18 +24,13 @@ public class DefaultUserRepositoryIT {
     InMemoryDbSetup inMemoryDbSetup = new InMemoryDbSetup();
     db = inMemoryDbSetup.initDatabaseByUrl();
 
-    db.update("CREATE TABLE user (id INT NOT NULL AUTO_INCREMENT,"
-                                      + "name VARCHAR(50),"
-                                      + "mail VARCHAR(250),"
-                                      + "passwordHashed VARCHAR(250),"
-                                      + "CONSTRAINT name_unique UNIQUE(name),"
-                                      + "CONSTRAINT mail_unique UNIQUE(mail));");
+    inMemoryDbSetup.createUserTable(db);
 
     userRepo = new DefaultUserRepository(db);
   }
 
   @Test
-  public void should() {
+  public void shouldStoreAndFindAllUsers() {
     User user = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.foo").build();
     userRepo.store(user);
 

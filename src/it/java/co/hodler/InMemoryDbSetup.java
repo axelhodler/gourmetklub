@@ -15,4 +15,22 @@ public class InMemoryDbSetup {
     return Database.forUrlAndCredentials(JDBC_URL, "", "");
   }
 
+  public void createRestaurantTable(Database db) {
+    db.update("CREATE TABLE restaurant (id INT NOT NULL AUTO_INCREMENT,"
+        + "name VARCHAR(50),"
+        + "pickerId INT,"
+        + "latitude VARCHAR(50),"
+        + "longitude VARCHAR(50));");
+  }
+
+  public void createUserTable(Database db) {
+    db.update("CREATE TABLE user (id INT NOT NULL AUTO_INCREMENT,"
+        + "name VARCHAR(50),"
+        + "mail VARCHAR(250),"
+        + "passwordHashed VARCHAR(250),"
+        + "CONSTRAINT name_unique UNIQUE(name),"
+        + "CONSTRAINT mail_unique UNIQUE(mail));");
+  }
+
+  
 }
