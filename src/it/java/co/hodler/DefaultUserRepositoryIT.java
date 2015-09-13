@@ -20,8 +20,9 @@ public class DefaultUserRepositoryIT {
 
   @Before
   public void setUp() throws Exception {
-    initInmemoryDb();
-    db = Database.forUrlAndCredentials("jdbc:h2:mem:test", "", "");
+    InMemoryDbSetup inMemoryDbSetup = new InMemoryDbSetup();
+    db = inMemoryDbSetup.initDatabaseByUrl();
+
     db.update("CREATE TABLE user (id INT NOT NULL AUTO_INCREMENT,"
                                       + "name VARCHAR(50),"
                                       + "mail VARCHAR(255),"
@@ -37,10 +38,5 @@ public class DefaultUserRepositoryIT {
   @After
   public void tearDown() {
     db.update("DROP TABLE user");
-  }
-
-  private void initInmemoryDb() throws ClassNotFoundException, SQLException {
-    Class.forName("org.h2.Driver");
-    DriverManager.getConnection("jdbc:h2:mem:test", "", "");
   }
 }
