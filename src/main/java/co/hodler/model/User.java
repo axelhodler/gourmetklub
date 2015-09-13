@@ -7,10 +7,6 @@ public class User {
   private String mail;
   private HashedPassword password;
 
-  public User(PropertyId id) {
-    this.id = id;
-  }
-
   public User(int id, String name, String mail, String password) {
     this.id = new PropertyId(id);
     this.name = name;
