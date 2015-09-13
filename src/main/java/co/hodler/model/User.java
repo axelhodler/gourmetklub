@@ -21,6 +21,18 @@ public class User {
     return id;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public String getMail() {
+    return mail;
+  }
+
+  public HashedPassword getHashedPassword() {
+    return password;
+  }
+
   public static class Builder {
     private String name;
     private String mail;
