@@ -8,7 +8,6 @@ import java.util.List;
 import org.dalesbred.Database;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import co.hodler.infrastructure.DefaultUserRepository;
@@ -31,7 +30,8 @@ public class DefaultUserRepositoryIT {
 
   @Test
   public void shouldStoreAndFindAllUsers() {
-    User user = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.foo").build();
+    User user = new User.Builder().named("Pete").chosePassword("password")
+        .mail("pete@own.foo").build();
     userRepo.store(user);
 
     List<User> allUsers = userRepo.findAll();
@@ -41,8 +41,10 @@ public class DefaultUserRepositoryIT {
 
   @Test(expected = RuntimeException.class)
   public void userNameShouldBeUnique() {
-    User user = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.foo").build();
-    User secondUserTryingToBeNamedPeter = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.bar").build();
+    User user = new User.Builder().named("Pete").chosePassword("password")
+        .mail("pete@own.foo").build();
+    User secondUserTryingToBeNamedPeter = new User.Builder().named("Pete")
+        .chosePassword("password").mail("pete@own.bar").build();
 
     userRepo.store(user);
     userRepo.store(secondUserTryingToBeNamedPeter);
@@ -50,8 +52,10 @@ public class DefaultUserRepositoryIT {
 
   @Test(expected = RuntimeException.class)
   public void userMailShouldBeUnique() {
-    User user = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.foo").build();
-    User secondUserTryingToUsePetersMail = new User.Builder().named("Pete").chosePassword("password").mail("pete@own.foo").build();
+    User user = new User.Builder().named("Pete").chosePassword("password")
+        .mail("pete@own.foo").build();
+    User secondUserTryingToUsePetersMail = new User.Builder().named("Pete")
+        .chosePassword("password").mail("pete@own.foo").build();
 
     userRepo.store(user);
     userRepo.store(secondUserTryingToUsePetersMail);
