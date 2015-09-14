@@ -20,6 +20,7 @@ public class User {
     this.password = new HashedPassword(password);
   }
 
+  @Deprecated
   public User(Builder builder) {
     this.name = builder.name;
     this.mail = builder.mail;
@@ -42,6 +43,7 @@ public class User {
     return password;
   }
 
+  @Deprecated
   public static class Builder {
     private String name;
     private String mail;
