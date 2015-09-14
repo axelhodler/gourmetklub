@@ -27,7 +27,7 @@ public class RegisterUserShould {
 
   @Test
   public void storeUser() {
-    User user = new User("Stef", "pw", "lol@gmail.com");
+    User user = new User("Stef", "lol@gmail.com", "pw");
 
     registerUser.register(user);
 
@@ -36,14 +36,14 @@ public class RegisterUserShould {
 
   @Test(expected=IllegalArgumentException.class)
   public void notStoreUsersWithoutName() {
-    User user = new User.Builder().chosePassword("pw").mail("lol@gmail.com").build();
+    User user = new User(null, "lol@gmail.com", "pw");
 
     registerUser.register(user);
   }
 
   @Test(expected=IllegalArgumentException.class)
   public void notStoreUsersWithoutEmail() {
-    User user = new User.Builder().named("Johnny").chosePassword("pw").build();
+    User user = new User("Johnny", null, "pw");
 
     registerUser.register(user);
   }

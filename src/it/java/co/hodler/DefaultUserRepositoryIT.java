@@ -31,8 +31,7 @@ public class DefaultUserRepositoryIT {
 
   @Test
   public void shouldStoreAndFindAllUsers() {
-    User user = new User.Builder().named("Pete").chosePassword("password")
-        .mail("pete@own.foo").build();
+    User user = new User("Pete", "pete@own.foo","password");
     userRepo.store(user);
 
     List<User> allUsers = userRepo.findAll();
@@ -42,10 +41,8 @@ public class DefaultUserRepositoryIT {
 
   @Test(expected = RuntimeException.class)
   public void userNameShouldBeUnique() {
-    User user = new User.Builder().named("Pete").chosePassword("password")
-        .mail("pete@own.foo").build();
-    User secondUserTryingToBeNamedPeter = new User.Builder().named("Pete")
-        .chosePassword("password").mail("pete@own.bar").build();
+    User user = new User("Pete", "pete@own.foo","password");
+    User secondUserTryingToBeNamedPeter = new User("Pete", "pete@own.bar","password");
 
     userRepo.store(user);
     userRepo.store(secondUserTryingToBeNamedPeter);
@@ -53,10 +50,8 @@ public class DefaultUserRepositoryIT {
 
   @Test(expected = RuntimeException.class)
   public void userMailShouldBeUnique() {
-    User user = new User.Builder().named("Pete").chosePassword("password")
-        .mail("pete@own.foo").build();
-    User secondUserTryingToUsePetersMail = new User.Builder().named("Pete")
-        .chosePassword("password").mail("pete@own.foo").build();
+    User user = new User("Pete", "pete@own.foo","password");
+    User secondUserTryingToUsePetersMail = new User("Pete", "pete@own.foo","password");
 
     userRepo.store(user);
     userRepo.store(secondUserTryingToUsePetersMail);
@@ -66,8 +61,7 @@ public class DefaultUserRepositoryIT {
   public void canGetUserIdByMailAndPassword() {
     String petesPassword = "password";
     String petesMail = "pete@own.foo";
-    User user = new User.Builder().named("Pete").chosePassword(petesPassword)
-        .mail(petesMail).build();
+    User user = new User("Pete", petesMail, petesPassword);
 
     userRepo.store(user);
 
