@@ -23,6 +23,7 @@ public class DefaultUserRepository implements UserRepository {
     this.database = database;
   }
 
+  @Override
   public void store(User user) {
     database.update("INSERT INTO user(name, mail, passwordHashed) VALUES (?, ?, ?);",
         user.getName(), user.getMail(), user.getHashedPassword().value());
