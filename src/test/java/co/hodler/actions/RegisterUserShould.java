@@ -51,7 +51,7 @@ public class RegisterUserShould {
 
   @Test(expected=IllegalArgumentException.class)
   public void notStoreUsersWithoutPassword() {
-    User user = new User.Builder().named("Johnny").mail("lol@gmail.com").build();
+    User user = new User("Johnny", "lol@gmail.com", null);
 
     registerUser.register(user);
   }
