@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import co.hodler.infrastructure.UserRepository;
+import co.hodler.model.HashedPassword;
 import co.hodler.model.User;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -27,7 +28,7 @@ public class RegisterUserShould {
 
   @Test
   public void storeUser() {
-    User user = new User("Stef", "lol@gmail.com", "pw");
+    User user = new User("Stef", "lol@gmail.com", new HashedPassword("pw"));
 
     registerUser.register(user);
 
@@ -36,14 +37,14 @@ public class RegisterUserShould {
 
   @Test(expected=IllegalArgumentException.class)
   public void notStoreUsersWithoutName() {
-    User user = new User(null, "lol@gmail.com", "pw");
+    User user = new User(null, "lol@gmail.com", new HashedPassword("pw"));
 
     registerUser.register(user);
   }
 
   @Test(expected=IllegalArgumentException.class)
   public void notStoreUsersWithoutEmail() {
-    User user = new User("Johnny", null, "pw");
+    User user = new User("Johnny", null, new HashedPassword("pw"));
 
     registerUser.register(user);
   }

@@ -7,10 +7,10 @@ public class User {
   private String mail;
   private HashedPassword password;
 
-  public User(String name, String mail, String password) {
+  public User(String name, String mail, HashedPassword hashedPassword) {
     this.name = name;
     this.mail = mail;
-    this.password = new HashedPassword(password);
+    this.password = hashedPassword;
   }
 
   public User(int id, String name, String mail, String password) {

@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import co.hodler.infrastructure.DefaultUserRepository;
+import co.hodler.model.HashedPassword;
 import co.hodler.model.PropertyId;
 import co.hodler.model.User;
 
@@ -31,7 +32,8 @@ public class DefaultUserRepositoryIT {
 
   @Test
   public void shouldStoreAndFindAllUsers() {
-    User user = new User("Pete", "pete@own.foo","password");
+    User user = new User("Pete", "pete@own.foo",
+        new HashedPassword("password"));
     userRepo.store(user);
 
     List<User> allUsers = userRepo.findAll();
@@ -41,8 +43,10 @@ public class DefaultUserRepositoryIT {
 
   @Test(expected = RuntimeException.class)
   public void userNameShouldBeUnique() {
-    User user = new User("Pete", "pete@own.foo","password");
-    User secondUserTryingToBeNamedPeter = new User("Pete", "pete@own.bar","password");
+    User user = new User("Pete", "pete@own.foo",
+        new HashedPassword("password"));
+    User secondUserTryingToBeNamedPeter = new User("Pete", "pete@own.bar",
+        new HashedPassword("password"));
 
     userRepo.store(user);
     userRepo.store(secondUserTryingToBeNamedPeter);
@@ -50,8 +54,10 @@ public class DefaultUserRepositoryIT {
 
   @Test(expected = RuntimeException.class)
   public void userMailShouldBeUnique() {
-    User user = new User("Pete", "pete@own.foo","password");
-    User secondUserTryingToUsePetersMail = new User("Pete", "pete@own.foo","password");
+    User user = new User("Pete", "pete@own.foo",
+        new HashedPassword("password"));
+    User secondUserTryingToUsePetersMail = new User("Pete", "pete@own.foo",
+        new HashedPassword("password"));
 
     userRepo.store(user);
     userRepo.store(secondUserTryingToUsePetersMail);
@@ -61,7 +67,7 @@ public class DefaultUserRepositoryIT {
   public void canGetUserIdByMailAndPassword() {
     String petesPassword = "password";
     String petesMail = "pete@own.foo";
-    User user = new User("Pete", petesMail, petesPassword);
+    User user = new User("Pete", petesMail, new HashedPassword(petesPassword));
 
     userRepo.store(user);
 
