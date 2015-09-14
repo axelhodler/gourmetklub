@@ -12,6 +12,11 @@ public class RegisterUser {
   }
 
   public void register(User user) {
+    if (user.getName() == null) {
+      throw new IllegalArgumentException("Username needs to be provided");
+    } else if (user.getMail() == null) {
+      throw new IllegalArgumentException("Mail address needs to be provided");
+    }
     userRepo.store(user);
   }
 

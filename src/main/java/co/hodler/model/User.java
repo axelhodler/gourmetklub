@@ -7,6 +7,12 @@ public class User {
   private String mail;
   private HashedPassword password;
 
+  public User(String name, String mail, String password) {
+    this.name = name;
+    this.mail = mail;
+    this.password = new HashedPassword(password);
+  }
+
   public User(int id, String name, String mail, String password) {
     this.id = new PropertyId(id);
     this.name = name;
@@ -57,6 +63,9 @@ public class User {
     }
 
     public User build() {
+      if (password == null) {
+        throw new IllegalArgumentException("Password needs to be provided");
+      }
       return new User(this);
     }
 

@@ -3,6 +3,7 @@ package co.hodler.actions;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Matchers.eq;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -17,13 +18,40 @@ public class RegisterUserShould {
   @Mock
   UserRepository userRepo;
 
+  private RegisterUser registerUser;
+
+  @Before
+  public void setUp() {
+    registerUser = new RegisterUser(userRepo);
+  }
+
   @Test
   public void storeUser() {
-    RegisterUser registerUser = new RegisterUser(userRepo);
-    User user = new User.Builder().named("Stef").chosePassword("pw").mail("lol@gmail.com").build();
+    User user = new User("Stef", "pw", "lol@gmail.com");
 
     registerUser.register(user);
 
     verify(userRepo).store(eq(user));
+  }
+
+  @Test(expected=IllegalArgumentException.class)
+  public void notStoreUsersWithoutName() {
+    User user = new User.Builder().chosePassword("pw").mail("lol@gmail.com").build();
+
+    registerUser.register(user);
+  }
+
+  @Test(expected=IllegalArgumentException.class)
+  public void notStoreUsersWithoutEmail() {
+    User user = new User.Builder().named("Johnny").chosePassword("pw").build();
+
+    registerUser.register(user);
+  }
+
+  @Test(expected=IllegalArgumentException.class)
+  public void notStoreUsersWithoutPassword() {
+    User user = new User.Builder().named("Johnny").mail("lol@gmail.com").build();
+
+    registerUser.register(user);
   }
 }
