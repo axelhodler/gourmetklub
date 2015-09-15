@@ -8,9 +8,6 @@ public class User {
   private HashedPassword password;
 
   public User(String name, String mail, HashedPassword hashedPassword) {
-    if (hashedPassword == null) {
-      throw new IllegalArgumentException("Necessary to provide a password");
-    }
     this.name = name;
     this.mail = mail;
     this.password = hashedPassword;

@@ -16,6 +16,8 @@ public class RegisterUser {
       throw new IllegalArgumentException("Username needs to be provided");
     } else if (user.getMail() == null) {
       throw new IllegalArgumentException("Mail address needs to be provided");
+    } else if (user.getHashedPassword() == null) {
+      throw new IllegalArgumentException("Necessary to provide a password");
     }
     userRepo.store(user);
   }
