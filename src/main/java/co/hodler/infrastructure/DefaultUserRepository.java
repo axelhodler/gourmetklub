@@ -12,13 +12,6 @@ public class DefaultUserRepository implements UserRepository {
 
   private Database database;
 
-  /**
-   * Necessary for some reason, DefaultRestaurantRepository does not need it
-   */
-  public DefaultUserRepository() {
-
-  }
-
   public DefaultUserRepository(Database database) {
     this.database = database;
   }
