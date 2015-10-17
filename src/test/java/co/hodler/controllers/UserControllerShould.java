@@ -19,7 +19,7 @@ import co.hodler.model.UserDto;
 import spark.Request;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserControllerTest {
+public class UserControllerShould {
 
   @Mock
   RegisterUser registerUser;
