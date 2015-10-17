@@ -1,9 +1,8 @@
 package co.hodler.infrastructure;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import com.eclipsesource.json.JsonObject;
 
@@ -17,7 +16,7 @@ public class JsonReader {
     JsonObject array = null;
     try {
       array = JsonObject
-          .readFrom(new InputStreamReader(new FileInputStream("./src/main/webapp/data/restaurants.json"), "UTF-8"));
+          .readFrom(new FileReader(jsonFile));
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     } catch (IOException e) {
