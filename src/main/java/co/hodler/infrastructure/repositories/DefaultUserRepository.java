@@ -22,10 +22,12 @@ public class DefaultUserRepository implements UserRepository {
         user.getName(), user.getMail(), user.getHashedPassword().value());
   }
 
+  @Override
   public List<User> findAll() {
     return database.findAll(User.class, "SELECT * FROM user");
   }
 
+  @Override
   public PropertyId fetchUserIdFor(String password, String mailAddress) {
     return database.findUnique(User.class,
         "SELECT * FROM user WHERE passwordHashed = ? AND mail = ?",
