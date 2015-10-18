@@ -1,7 +1,7 @@
 package co.hodler.actions;
 
 import co.hodler.infrastructure.CoordinatesProvider;
-import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.infrastructure.repositories.RestaurantRepository;
 import co.hodler.model.Restaurant;
 
 public class AddRestaurant {

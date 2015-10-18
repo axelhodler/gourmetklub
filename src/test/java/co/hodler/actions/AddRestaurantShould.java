@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import co.hodler.infrastructure.CoordinatesProvider;
-import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.infrastructure.repositories.RestaurantRepository;
 import co.hodler.model.Coordinates;
 import co.hodler.model.Restaurant;
 

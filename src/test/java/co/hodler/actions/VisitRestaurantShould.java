@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.hodler.infrastructure.VisitRepository;
+import co.hodler.infrastructure.repositories.VisitRepository;
 import co.hodler.model.Visit;
 
 @RunWith(MockitoJUnitRunner.class)

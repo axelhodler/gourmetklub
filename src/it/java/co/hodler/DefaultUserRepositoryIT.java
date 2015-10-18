@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import co.hodler.infrastructure.DefaultUserRepository;
+import co.hodler.infrastructure.repositories.DefaultUserRepository;
 import co.hodler.model.HashedPassword;
 import co.hodler.model.PropertyId;
 import co.hodler.model.User;

@@ -1,7 +1,7 @@
 package co.hodler.actions;
 
-import co.hodler.infrastructure.RestaurantRepository;
-import co.hodler.infrastructure.VisitRepository;
+import co.hodler.infrastructure.repositories.RestaurantRepository;
+import co.hodler.infrastructure.repositories.VisitRepository;
 import co.hodler.model.Rating;
 import co.hodler.model.Visit;
 

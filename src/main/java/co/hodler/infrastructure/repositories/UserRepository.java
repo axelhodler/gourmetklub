@@ -1,4 +1,4 @@
-package co.hodler.infrastructure;
+package co.hodler.infrastructure.repositories;
 
 import co.hodler.model.User;
 

@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.infrastructure.repositories.RestaurantRepository;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RetrieveRestaurantsShould {

@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.hodler.infrastructure.UserRepository;
+import co.hodler.infrastructure.repositories.UserRepository;
 import co.hodler.model.HashedPassword;
 import co.hodler.model.User;
 

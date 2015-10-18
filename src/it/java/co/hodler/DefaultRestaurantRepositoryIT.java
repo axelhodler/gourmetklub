@@ -11,8 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import co.hodler.infrastructure.DefaultRestaurantRepository;
-import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.infrastructure.repositories.DefaultRestaurantRepository;
+import co.hodler.infrastructure.repositories.RestaurantRepository;
 import co.hodler.model.Coordinates;
 import co.hodler.model.Restaurant;
 

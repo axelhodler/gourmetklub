@@ -2,7 +2,7 @@ package co.hodler.actions;
 
 import java.util.List;
 
-import co.hodler.infrastructure.RestaurantRepository;
+import co.hodler.infrastructure.repositories.RestaurantRepository;
 import co.hodler.model.Restaurant;
 
 public class RetrieveRestaurants {
