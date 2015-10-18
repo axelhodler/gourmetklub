@@ -1,15 +1,14 @@
 package co.hodler.actions;
 
-import co.hodler.infrastructure.CoordinatesProvider;
 import co.hodler.infrastructure.repositories.RestaurantRepository;
 import co.hodler.model.Restaurant;
 
 public class AddRestaurant {
 
   private RestaurantRepository repository;
-  private CoordinatesProvider coordinatesProvider;
+  private ProvideCoordinates coordinatesProvider;
 
-  public AddRestaurant(RestaurantRepository repository, CoordinatesProvider coordinatesProvider) {
+  public AddRestaurant(RestaurantRepository repository, ProvideCoordinates coordinatesProvider) {
     this.repository = repository;
     this.coordinatesProvider = coordinatesProvider;
   }

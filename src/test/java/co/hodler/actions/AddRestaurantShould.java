@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.hodler.infrastructure.CoordinatesProvider;
 import co.hodler.infrastructure.repositories.RestaurantRepository;
 import co.hodler.model.Coordinates;
 import co.hodler.model.Restaurant;
@@ -20,7 +19,7 @@ public class AddRestaurantShould {
   @Mock
   RestaurantRepository repository;
   @Mock
-  CoordinatesProvider coordinatesProvider;
+  ProvideCoordinates coordinatesProvider;
 
   private AddRestaurant addRestaurant;
 

@@ -1,4 +1,4 @@
-package co.hodler.infrastructure;
+package co.hodler.actions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -8,7 +8,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import co.hodler.model.Coordinates;
 
-public class CoordinatesProvider {
+public class ProvideCoordinates {
 
   public Coordinates fetchCoordinatesFor(String address) {
     JSONObject location = null;

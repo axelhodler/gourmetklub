@@ -2,7 +2,7 @@ package co.hodler;
 
 import org.junit.Test;
 
-import co.hodler.infrastructure.CoordinatesProvider;
+import co.hodler.actions.ProvideCoordinates;
 import co.hodler.model.Coordinates;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -12,7 +12,7 @@ public class CoordinatesProviderIT {
 
   @Test
   public void providesCoordinatesForAddress() {
-    CoordinatesProvider coordProvider = new CoordinatesProvider();
+    ProvideCoordinates coordProvider = new ProvideCoordinates();
 
     Coordinates coords = coordProvider.fetchCoordinatesFor("Schwabstrasse 100 Stuttgart");
 
