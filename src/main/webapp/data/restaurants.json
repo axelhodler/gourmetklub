@@ -69,6 +69,34 @@
     "address":"Tübinger Str. 41-43, 70178 Stuttgart",
     "lat":"48.7705006",
     "lng":"9.1727707"
+  },
+  {
+    "id":11,
+    "name":"Rice Man",
+    "address":"Schulstrasse 18, 70173 Stuttgart",
+    "lat":"48.77598080000001",
+    "lng":"9.1768503"
+  },
+  {
+    "id":12,
+    "name":"Besitos",
+    "address":"Rotebühlplatz 21, 70178 Stuttgart",
+    "lat":"48.7745648",
+    "lng":"9.1717468"
+  },
+  {
+    "id":13,
+    "name":"Buschpilot",
+    "address":"Karl-Schurz-Str.28c, 70190 Stuttgart",
+    "lat":"48.7939241",
+    "lng":"9.2062355"
+  },
+  {
+    "id":14,
+    "name":"Speisekammer West",
+    "address":"Rosenbergstr. 89, 70193 Stuttgart",
+    "lat":"48.7776822",
+    "lng":"9.1539913"
   }
 ]
 }
