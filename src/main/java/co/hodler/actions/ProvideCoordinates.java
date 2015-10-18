@@ -1,27 +1,25 @@
 package co.hodler.actions;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import static com.eclipsesource.json.JsonObject.readFrom;
 
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import com.eclipsesource.json.JsonObject;
 
+import co.hodler.infrastructure.external.CoordinatesProvider;
 import co.hodler.model.Coordinates;
-
 public class ProvideCoordinates {
 
+  private CoordinatesProvider coordinatesProvider;
+
+  public ProvideCoordinates(CoordinatesProvider coordinatesProvider) {
+    this.coordinatesProvider = coordinatesProvider;
+  }
+
   public Coordinates fetchCoordinatesFor(String address) {
-    JSONObject location = null;
-    try {
-      location = Unirest.get("http://maps.google.com/maps/api/geocode/json")
-          .queryString("address", "Schwabstrasse 100 Stuttgart").asJson()
-          .getBody().getObject().getJSONArray("results").getJSONObject(0)
-          .getJSONObject("geometry").getJSONObject("location");
-    } catch (JSONException | UnirestException e) {
-      e.printStackTrace();
-    }
-    return new Coordinates(location.get("lng").toString(),
-        location.get("lat").toString());
+    String coordinatesJson = coordinatesProvider.fetchCoordinatesFor(address);
+    JsonObject coordinates = readFrom(coordinatesJson);
+
+    return new Coordinates(coordinates.get("lat").toString(),
+        coordinates.get("lng").toString());
   }
 
 }
