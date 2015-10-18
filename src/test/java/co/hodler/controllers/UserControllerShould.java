@@ -1,5 +1,6 @@
 package co.hodler.controllers;
 
+import static co.hodler.infrastructure.JsonReader.jsonObjectAsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -28,11 +29,9 @@ public class UserControllerShould {
   @Captor
   ArgumentCaptor<User> user;
 
-  private static final String USER_JSON = "{\"name\":\"johnny\", \"mail\":\"john@john.org\", \"password\":\"johnny123\"}";
-
   @Test
   public void registerUser() {
-    given(request.body()).willReturn(USER_JSON);
+    given(request.body()).willReturn(jsonObjectAsString("./src/main/webapp/data/user.json"));
     UserController c = new UserController(registerUser, new UserDto());
 
     c.registerUser(request, null);

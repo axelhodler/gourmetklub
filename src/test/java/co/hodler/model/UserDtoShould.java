@@ -1,5 +1,6 @@
 package co.hodler.model;
 
+import static co.hodler.infrastructure.JsonReader.jsonObjectAsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -16,7 +17,7 @@ public class UserDtoShould {
   @Before
   public void setUp() {
     userJson = "{\"name\":\"foo\", \"mail\":\"bar\", \"password\":\"baz\"}";
-    johnAsJson = "{\"name\":\"johnny\", \"mail\":\"john@john.org\", \"password\":\"johnny123\"}";
+    johnAsJson = jsonObjectAsString("./src/main/webapp/data/user.json");
 
     dto = new UserDto();
   }
