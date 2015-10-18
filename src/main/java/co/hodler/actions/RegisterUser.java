@@ -1,7 +1,7 @@
 package co.hodler.actions;
 
 import co.hodler.infrastructure.repositories.UserRepository;
-import co.hodler.model.User;
+import co.hodler.model.user.User;
 
 public class RegisterUser {
 

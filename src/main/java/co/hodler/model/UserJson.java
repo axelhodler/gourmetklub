@@ -2,6 +2,9 @@ package co.hodler.model;
 
 import com.eclipsesource.json.JsonObject;
 
+import co.hodler.model.user.HashedPassword;
+import co.hodler.model.user.User;
+
 public class UserJson {
 
   private JsonObject jsonObject;

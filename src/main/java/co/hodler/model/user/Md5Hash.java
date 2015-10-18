@@ -1,4 +1,4 @@
-package co.hodler.model;
+package co.hodler.model.user;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

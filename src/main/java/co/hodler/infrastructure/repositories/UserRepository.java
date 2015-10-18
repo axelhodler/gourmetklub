@@ -1,6 +1,6 @@
 package co.hodler.infrastructure.repositories;
 
-import co.hodler.model.User;
+import co.hodler.model.user.User;
 
 public interface UserRepository {
 

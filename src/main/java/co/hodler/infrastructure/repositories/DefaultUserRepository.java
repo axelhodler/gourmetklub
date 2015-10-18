@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.dalesbred.Database;
 
-import co.hodler.model.HashedPassword;
-import co.hodler.model.PropertyId;
-import co.hodler.model.User;
+import co.hodler.model.user.HashedPassword;
+import co.hodler.model.user.PropertyId;
+import co.hodler.model.user.User;
 
 public class DefaultUserRepository implements UserRepository {
 

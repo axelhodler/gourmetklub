@@ -14,9 +14,9 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import co.hodler.actions.RegisterUser;
-import co.hodler.model.HashedPassword;
-import co.hodler.model.User;
 import co.hodler.model.UserDto;
+import co.hodler.model.user.HashedPassword;
+import co.hodler.model.user.User;
 import spark.Request;
 
 @RunWith(MockitoJUnitRunner.class)

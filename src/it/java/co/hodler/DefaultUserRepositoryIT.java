@@ -11,9 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import co.hodler.infrastructure.repositories.DefaultUserRepository;
-import co.hodler.model.HashedPassword;
-import co.hodler.model.PropertyId;
-import co.hodler.model.User;
+import co.hodler.model.user.HashedPassword;
+import co.hodler.model.user.PropertyId;
+import co.hodler.model.user.User;
 
 public class DefaultUserRepositoryIT {
 

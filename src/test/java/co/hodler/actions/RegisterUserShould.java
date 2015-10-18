@@ -10,8 +10,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import co.hodler.infrastructure.repositories.UserRepository;
-import co.hodler.model.HashedPassword;
-import co.hodler.model.User;
+import co.hodler.model.user.HashedPassword;
+import co.hodler.model.user.User;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RegisterUserShould {

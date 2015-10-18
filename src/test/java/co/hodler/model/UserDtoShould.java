@@ -7,6 +7,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
+import co.hodler.model.user.HashedPassword;
+
 public class UserDtoShould {
 
   private String userJson;
