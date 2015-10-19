@@ -1,4 +1,4 @@
-package co.hodler.actions;
+package co.hodler.actions.user;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Matchers.eq;
@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import co.hodler.actions.user.RegisterUser;
 import co.hodler.infrastructure.repositories.UserRepository;
 import co.hodler.model.user.HashedPassword;
 import co.hodler.model.user.User;

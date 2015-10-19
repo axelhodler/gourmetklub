@@ -1,6 +1,6 @@
 package co.hodler.controllers;
 
-import co.hodler.actions.RegisterUser;
+import co.hodler.actions.user.RegisterUser;
 import co.hodler.model.UserDto;
 import spark.Request;
 import spark.Response;
