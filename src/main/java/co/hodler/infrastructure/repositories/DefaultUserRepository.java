@@ -34,4 +34,11 @@ public class DefaultUserRepository implements UserRepository {
         new HashedPassword(password).value(), mailAddress).getId();
   }
 
+  @Override
+  public boolean areCredentialsCorrect(String mailAddress,
+      HashedPassword password) {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
 }
