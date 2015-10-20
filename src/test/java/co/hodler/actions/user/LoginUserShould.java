@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import co.hodler.infrastructure.repositories.UserRepository;
+import co.hodler.model.user.EMail;
 import co.hodler.model.user.HashedPassword;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -23,6 +24,8 @@ public class LoginUserShould {
 
   private LoginUser loginUser;
 
+  private final EMail MAIL_ADDRESS = new EMail("horus@lupercal.com");
+
   @Before
   public void setUp() {
     loginUser = new LoginUser(userRepository, provideToken);
@@ -30,26 +33,26 @@ public class LoginUserShould {
 
   @Test
   public void checkIfLoginExists() {
-    loginUser.login("horus@lupercal.com", "password");
+    loginUser.login(MAIL_ADDRESS, "password");
 
-    verify(userRepository).areCredentialsCorrect("horus@lupercal.com", new HashedPassword("password"));
+    verify(userRepository).areCredentialsCorrect(MAIL_ADDRESS, new HashedPassword("password"));
   }
 
   @Test
   public void provideTokenOnCorrectLogin() {
-    given(userRepository.areCredentialsCorrect("horus@lupercal.com", new HashedPassword("astartes"))).willReturn(true);
+    given(userRepository.areCredentialsCorrect(MAIL_ADDRESS, new HashedPassword("astartes"))).willReturn(true);
 
-    loginUser.login("horus@lupercal.com", "astartes");
+    loginUser.login(MAIL_ADDRESS, "astartes");
 
-    verify(provideToken).to("horus@lupercal.com");
+    verify(provideToken).to(MAIL_ADDRESS);
   }
 
   @Test
   public void notProvideTokenOnIncorrectLogin() {
-    given(userRepository.areCredentialsCorrect("horus@lupercal.com", new HashedPassword("astartes"))).willReturn(false);
+    given(userRepository.areCredentialsCorrect(MAIL_ADDRESS, new HashedPassword("astartes"))).willReturn(false);
 
-    loginUser.login("horus@lupercal.com", "astartes");
+    loginUser.login(MAIL_ADDRESS, "astartes");
 
-    verify(provideToken, never()).to("horus@lupercal.com");
+    verify(provideToken, never()).to(MAIL_ADDRESS);
   }
 }

@@ -2,6 +2,7 @@ package co.hodler.infrastructure.repositories;
 
 import java.util.List;
 
+import co.hodler.model.user.EMail;
 import co.hodler.model.user.HashedPassword;
 import co.hodler.model.user.PropertyId;
 import co.hodler.model.user.User;
@@ -14,5 +15,5 @@ public interface UserRepository {
 
   public PropertyId fetchUserIdFor(String password, String mailAddress);
 
-  public boolean areCredentialsCorrect(String mailAddress, HashedPassword password);
+  public boolean areCredentialsCorrect(EMail mailAddress, HashedPassword password);
 }
