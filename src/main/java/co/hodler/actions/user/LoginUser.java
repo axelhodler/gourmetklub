@@ -1,6 +1,7 @@
 package co.hodler.actions.user;
 
 import co.hodler.infrastructure.repositories.UserRepository;
+import co.hodler.model.user.Credentials;
 import co.hodler.model.user.EMail;
 import co.hodler.model.user.HashedPassword;
 
@@ -19,7 +20,7 @@ public class LoginUser {
   }
 
   public void login(EMail mailAddress, String password) {
-    if (userRepository.areCredentialsCorrect(mailAddress, new HashedPassword(password)))
+    if (userRepository.areCredentialsCorrect(new Credentials(mailAddress, new HashedPassword(password))))
       provideToken.to(mailAddress);
   }
 

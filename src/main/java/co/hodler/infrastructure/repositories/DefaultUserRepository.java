@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.dalesbred.Database;
 
+import co.hodler.model.user.Credentials;
 import co.hodler.model.user.EMail;
 import co.hodler.model.user.HashedPassword;
 import co.hodler.model.user.PropertyId;
@@ -36,9 +37,7 @@ public class DefaultUserRepository implements UserRepository {
   }
 
   @Override
-  public boolean areCredentialsCorrect(EMail mailAddress,
-      HashedPassword password) {
-    // TODO Auto-generated method stub
+  public boolean areCredentialsCorrect(Credentials credentials) {
     return false;
   }
 
