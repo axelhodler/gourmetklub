@@ -6,13 +6,20 @@ import co.hodler.model.user.HashedPassword;
 public class LoginUser {
 
   private UserRepository userRepository;
+  private ProvideToken provideToken;
 
   public LoginUser(UserRepository userRepository) {
     this.userRepository = userRepository;
   }
 
+  public LoginUser(UserRepository userRepository, ProvideToken provideToken) {
+    this.userRepository = userRepository;
+    this.provideToken = provideToken;
+  }
+
   public void login(String mailAddress, String password) {
-    userRepository.areCredentialsCorrect(mailAddress, new HashedPassword("password"));
+    if (userRepository.areCredentialsCorrect(mailAddress, new HashedPassword(password)))
+      provideToken.to(mailAddress);
   }
 
 }
