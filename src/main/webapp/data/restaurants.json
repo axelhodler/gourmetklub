@@ -97,6 +97,20 @@
     "address":"Rosenbergstr. 89, 70193 Stuttgart",
     "lat":"48.7776822",
     "lng":"9.1539913"
+  },
+  {
+    "id":15,
+    "name":"1893",
+    "address":"Mercedesstraße 109, 70372 Stuttgart",
+    "lat":"48.7896",
+    "lng":"9.23477"
+  },
+  {
+    "id":16,
+    "name":"ABACCO`S STEAKHOUSE",
+    "address":"Rotebühlplatz 10, 70173 Stuttgart",
+    "lat":"48.775",
+    "lng":"9.1732"
   }
 ]
 }
