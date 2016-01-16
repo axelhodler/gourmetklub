@@ -100,13 +100,20 @@
   },
   {
     "id":15,
+    "name":"Coox und Candy",
+    "address":"Sulzbachgasse 14, 70372 Stuttgart",
+    "lat":"48.8048363",
+    "lng":"9.2154156"
+  },
+  {
+    "id":16,
     "name":"1893",
     "address":"Mercedesstraße 109, 70372 Stuttgart",
     "lat":"48.7896",
     "lng":"9.23477"
   },
   {
-    "id":16,
+    "id":17,
     "name":"ABACCO`S STEAKHOUSE",
     "address":"Rotebühlplatz 10, 70173 Stuttgart",
     "lat":"48.775",
