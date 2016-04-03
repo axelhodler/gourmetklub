@@ -118,6 +118,20 @@
     "address":"Rotebühlplatz 10, 70173 Stuttgart",
     "lat":"48.775",
     "lng":"9.1732"
+  },
+  {
+    "id":18,
+    "name":"Sultan Saray",
+    "address":"Rotebühlstraße 53, 70178 Stuttgart",
+    "lat": "48.77317",
+    "lng": "9.16833"
+  },
+  {
+    "id":19,
+    "name": "Thai Thaani",
+    "address": "Neckarstraße 246, 70190 Stuttgart",
+    "lat": "48.794605",
+    "lng": "9.204965999999999"
   }
 ]
 }
