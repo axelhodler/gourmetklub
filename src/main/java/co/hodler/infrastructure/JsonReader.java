@@ -8,6 +8,10 @@ import com.eclipsesource.json.JsonObject;
 
 public class JsonReader {
 
+  public static JsonObject stringAsJsonObject(String json) {
+    return JsonObject.readFrom(json);
+  }
+
   public static String jsonObjectAsString(String jsonFile) {
     return jsonObject(jsonFile).toString();
   }
