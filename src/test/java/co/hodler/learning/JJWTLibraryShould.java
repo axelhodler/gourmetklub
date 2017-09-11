@@ -25,7 +25,7 @@ public class JJWTLibraryShould {
   }
 
   @Test
-  public void createVerifyableJsonWebTokens() {
+  public void createVerifiableJsonWebTokens() {
     String token = createTokenFor("Joe");
 
     assertThat(Jwts.parser()
