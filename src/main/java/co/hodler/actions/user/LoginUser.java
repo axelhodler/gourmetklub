@@ -19,9 +19,11 @@ public class LoginUser {
     this.provideToken = provideToken;
   }
 
-  public void login(EMail mailAddress, String password) {
+  public String login(EMail mailAddress, String password) {
     if (userRepository.areCredentialsCorrect(new Credentials(mailAddress, new HashedPassword(password))))
-      provideToken.to(mailAddress);
+      return provideToken.to(mailAddress);
+    else
+      return "";
   }
 
 }
