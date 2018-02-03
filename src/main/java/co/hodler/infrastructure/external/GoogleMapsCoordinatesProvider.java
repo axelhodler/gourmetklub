@@ -4,7 +4,7 @@ import static co.hodler.infrastructure.Throwables.executeQuery;
 
 import com.mashape.unirest.http.Unirest;
 public class GoogleMapsCoordinatesProvider implements CoordinatesProvider {
-
+  // curl http://maps.google.com/maps/api/geocode/json\?address\=Schwabstr%20100,Stuttgart
   @Override
   public String fetchCoordinatesFor(String address) {
     return executeQuery(() -> Unirest.get("http://maps.google.com/maps/api/geocode/json")
